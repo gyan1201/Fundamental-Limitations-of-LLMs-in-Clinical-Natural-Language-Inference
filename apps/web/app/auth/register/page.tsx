@@ -21,14 +21,14 @@ export default function RegisterPage() {
   };
 
   return (
-    <main style={{ padding: 32 }}>
-      <h2>Create account</h2>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 8, maxWidth: 360 }}>
-        <input placeholder="Full name" value={fullName} onChange={(e) => setFullName(e.target.value)} />
-        <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-        <button onClick={onRegister}>Register</button>
+    <main className="max-w-sm">
+      <h2 className="text-2xl font-semibold">Create account</h2>
+      <div className="flex flex-col gap-3 mt-4">
+        <input className="border rounded px-3 py-2" placeholder="Full name" value={fullName} onChange={(e) => setFullName(e.target.value)} />
+        <input className="border rounded px-3 py-2" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <input className="border rounded px-3 py-2" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        {error && <p className="text-red-600 text-sm">{error}</p>}
+        <button className="px-4 py-2 rounded bg-black text-white" onClick={onRegister}>Register</button>
       </div>
     </main>
   );

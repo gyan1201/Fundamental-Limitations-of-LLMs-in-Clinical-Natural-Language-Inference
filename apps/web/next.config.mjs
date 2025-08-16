@@ -1,6 +1,6 @@
-import type { NextConfig } from 'next';
-
-const nextConfig: NextConfig = {
+/**** Next.js config ****/
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   experimental: {
     typedRoutes: true
   },

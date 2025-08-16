@@ -20,7 +20,9 @@
     "zustand": "^4.5.5",
     "react-hook-form": "^7.53.0",
     "@react-native-async-storage/async-storage": "^1.23.1",
-    "expo-secure-store": "^13.0.2"
+    "expo-secure-store": "^13.0.2",
+    "@gadget/types": "workspace:*",
+    "@gadget/store": "workspace:*"
   },
   "devDependencies": {
     "@types/react": "~18.2.79",

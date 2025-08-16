@@ -19,12 +19,12 @@ export default function DashboardPage() {
   };
 
   return (
-    <main style={{ padding: 32 }}>
-      <h2>Dashboard</h2>
-      <p>Signed in as {email}</p>
-      <div style={{ display: 'flex', gap: 12, marginTop: 12 }}>
-        <button onClick={onSignOut}>Sign out</button>
-        <Link href="/admin/products">Manage products</Link>
+    <main>
+      <h2 className="text-2xl font-semibold">Dashboard</h2>
+      <p className="mt-2">Signed in as {email}</p>
+      <div className="flex gap-3 mt-4">
+        <button className="px-4 py-2 rounded border" onClick={onSignOut}>Sign out</button>
+        <Link className="px-4 py-2 rounded bg-black text-white" href="/admin/products">Manage products</Link>
       </div>
     </main>
   );
