@@ -1,0 +1,12 @@
+{
+  "name": "gadget-platform",
+  "private": true,
+  "packageManager": "pnpm@10.11.1",
+  "workspaces": ["apps/*", "packages/*"],
+  "scripts": {
+    "dev:web": "pnpm --filter web dev",
+    "dev:mobile": "pnpm --filter mobile start",
+    "build:web": "pnpm --filter web build",
+    "lint": "pnpm -r lint"
+  }
+}
