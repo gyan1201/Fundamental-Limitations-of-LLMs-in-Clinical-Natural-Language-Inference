@@ -31,9 +31,23 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   switch (event.type) {
-    case 'payment_intent.succeeded':
-      // TODO: update order status in Supabase
+    case 'payment_intent.succeeded': {
+      const pi = event.data.object as Stripe.PaymentIntent;
+      const userId = pi.metadata?.userId;
+      if (userId) {
+        try {
+          await fetch(`${process.env.NEXT_PUBLIC_SUPABASE_URL}/functions/v1/new-notification`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${process.env.SUPABASE_SERVICE_ROLE_KEY}`
+            },
+            body: JSON.stringify({ user_id: userId, type: 'payment_succeeded', payload: { amount: pi.amount_received } })
+          });
+        } catch {}
+      }
       break;
+    }
     default:
       break;
   }

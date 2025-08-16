@@ -16,7 +16,11 @@
     "@hookform/resolvers": "^3.9.0",
     "react-hook-form": "^7.53.0",
     "stripe": "^16.8.0",
-    "@gadget/store": "workspace:*"
+    "@gadget/store": "workspace:*",
+    "framer-motion": "^11.3.31",
+    "class-variance-authority": "^0.7.0",
+    "tailwind-merge": "^2.5.4",
+    "clsx": "^2.1.1"
   },
   "devDependencies": {
     "typescript": "^5.5.4",
