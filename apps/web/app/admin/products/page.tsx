@@ -2,21 +2,23 @@
 
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { supabase } from '../../../lib/supabaseClient';
+
 import { ImageUpload } from '../../components/upload';
 
 type ProductForm = {
   title: string;
   priceCents: number;
   stock: number;
+  imageUrl?: string;
 };
 
 export default function AdminProductsPage() {
   const [products, setProducts] = useState<any[]>([]);
-  const { register, handleSubmit, reset, setValue, watch } = useForm<ProductForm & { imageUrl?: string }>();
+  const { register, handleSubmit, reset, setValue } = useForm<ProductForm>();
 
   const fetchProducts = async () => {
-    const { data } = await supabase.from('products').select('*').order('created_at', { ascending: false });
+    const res = await fetch('/api/admin/products');
+    const data = await res.json();
     setProducts(data ?? []);
   };
 
@@ -24,14 +26,18 @@ export default function AdminProductsPage() {
     fetchProducts();
   }, []);
 
-  const onCreate = async (values: ProductForm & { imageUrl?: string }) => {
-    await supabase.from('products').insert({ title: values.title, price_cents: values.priceCents, stock: values.stock, image_url: values.imageUrl });
+  const onCreate = async (values: ProductForm) => {
+    await fetch('/api/admin/products', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ title: values.title, price_cents: values.priceCents, stock: values.stock, image_url: values.imageUrl })
+    });
     reset();
     fetchProducts();
   };
 
   const onDelete = async (id: string) => {
-    await supabase.from('products').delete().eq('id', id);
+    await fetch(`/api/admin/products?id=${id}`, { method: 'DELETE' });
     fetchProducts();
   };
 
