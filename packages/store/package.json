@@ -1,0 +1,15 @@
+{
+  "name": "@gadget/store",
+  "version": "0.1.0",
+  "private": true,
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "sideEffects": false,
+  "dependencies": {
+    "zustand": "^4.5.5",
+    "@gadget/types": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0"
+  }
+}
